@@ -1,10 +1,10 @@
-
 class Company {
   final String symbol;
   final String name;
   final double latestPrice;
 
-  Company({required this.symbol, required this.name, required this.latestPrice});
+  Company(
+      {required this.symbol, required this.name, required this.latestPrice});
 
   factory Company.fromJson(Map<String, dynamic> json) {
     return Company(

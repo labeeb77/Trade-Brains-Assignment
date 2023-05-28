@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trade_brains/view/screens/watch_List.dart';
+import 'package:trade_brains/view/screens/watch_list.dart';
 
 import '../screens/home_screen.dart';
 
