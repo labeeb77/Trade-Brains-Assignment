@@ -24,7 +24,7 @@ Future<List<Company>> fetchSearchResults(String keywords) async {
   }
 }
 
-Future<double> fetchLatestPrice(String symbol) async {
+Future<double?> fetchLatestPrice(String symbol) async {
   log('entered to LatestPrice');
   const apiKey = '4O7RPT8JJXQ4I5UO';
   final apiUrl =
@@ -34,9 +34,15 @@ Future<double> fetchLatestPrice(String symbol) async {
   if (response.statusCode == 200) {
     final jsonBody = json.decode(response.body);
     final companyData = jsonBody['Global Quote'];
-    return double.parse(companyData['05. price']);
+
+     if (companyData != null && companyData.containsKey('05. price')) {
+      return double.tryParse(companyData['05. price']) ;
+    } else {
+      // Return null for missing price or invalid company data
+      return null;
+    }
   } else {
     throw Exception(
-        'Error occure in APi call, Failed to fetch latest price for $symbol');
+        'Error occurred in API call, Failed to fetch latest price for $symbol');
   }
 }

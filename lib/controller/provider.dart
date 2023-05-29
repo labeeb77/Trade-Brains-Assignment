@@ -61,7 +61,7 @@ class ProviderScreen with ChangeNotifier {
           stocktPrice.add(Company(
               symbol: result.symbol,
               name: result.name,
-              latestPrice: latestPrice));
+              latestPrice: latestPrice ?? 00));
           log(stocktPrice[0].latestPrice.toString());
         }
 
